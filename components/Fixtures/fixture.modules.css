@@ -1,0 +1,15 @@
+.date, .halftime {
+  font-size: 0.75em;
+}
+
+.ref {
+  font-size: 0.75em;
+}
+
+.date {
+  color: white;
+  background: rgba(0,0,0,0.5);
+  padding: 0.2em 0.5em;
+  border-radius: 8px;
+}
+
