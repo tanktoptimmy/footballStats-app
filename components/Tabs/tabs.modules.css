@@ -10,7 +10,7 @@ button {
   padding: 5px 15px;
   font-weight: 700;
 }
-button[aria-selected="true"] {
+button[aria-selected='true'] {
   color: white;
   background: black;
 }

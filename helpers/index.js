@@ -1,3 +1,3 @@
-import { resultedEvents, fixtureEvents } from "./events";
+import { resultedEvents, fixtureEvents } from './events';
 
-export {resultedEvents, fixtureEvents}
+export { resultedEvents, fixtureEvents };

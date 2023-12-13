@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const fixtureSchema = new mongoose.Schema({
   _id: Number,
@@ -9,33 +9,32 @@ const fixtureSchema = new mongoose.Schema({
   teams: {
     home: {
       name: String,
-      id: Number
+      id: Number,
     },
     away: {
       name: String,
-      id: Number
-    }
+      id: Number,
+    },
   },
   round: String,
   league: {
     name: String,
-    id: Number
+    id: Number,
   },
   score: {
     halftime: {
       home: String,
-      away: String
+      away: String,
     },
     fulltime: {
       home: String,
-      away: String
-    }
+      away: String,
+    },
   },
   status: String,
-  events: []
-})
+  events: [],
+});
 
-const Fixture =
-  mongoose.models.Fixture || mongoose.model('Fixture', fixtureSchema)
+const Fixture = mongoose.models.Fixture || mongoose.model('Fixture', fixtureSchema);
 
-export default Fixture
+export default Fixture;
