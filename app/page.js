@@ -37,7 +37,7 @@ const leagues = [
 const Home = () => {
   return (
     <div>
-      <h1 className="center">Some Football Stats</h1>
+      <h1>Some Football Stats</h1>
       <main>
         <ul>
           {leagues.map((league) => (

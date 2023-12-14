@@ -1,0 +1,20 @@
+.card {
+  height: 15px;
+  width: 10px;
+  border-radius: 5px;
+}
+
+.yellow-card {
+  background: yellow;
+  border: 1px solid black;
+}
+
+.red-card {
+  background: red;
+  border: 1px solid black;
+}
+
+.yellowred-card {
+  background: orange;
+  border: 1px solid black;
+}

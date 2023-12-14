@@ -108,6 +108,7 @@ const League = ({ events }) => {
     <table>
       <thead>
         <tr>
+          <th>#</th>
           <th>Team</th>
           <th>P</th>
           <th>W</th>
@@ -123,7 +124,8 @@ const League = ({ events }) => {
       </thead>
       <tbody>
         {leagueTable.map((teamData, index) => (
-          <tr key={index}>
+          <tr key={teamData.team}>
+            <td>{index + 1}</td>
             <td>{teamData.team}</td>
             <td>{teamData.matchesPlayed}</td>
             <td>{teamData.wins}</td>

@@ -1,7 +1,7 @@
 import { Block } from '@/components';
 
-import './btts.modules.css';
-const BTTS = ({ events }) => {
+import './form.modules.css';
+const Form = ({ events }) => {
   const createTeamMatchesObject = (matches) => {
     const teamMatches = {};
 
@@ -10,6 +10,7 @@ const BTTS = ({ events }) => {
       const awayTeamName = match.teams.away.name;
       const homeTeamScore = parseInt(match.score.fulltime.home);
       const awayTeamScore = parseInt(match.score.fulltime.away);
+      // change this to home/Draw/Away
       const btts = homeTeamScore > 0 && awayTeamScore > 0;
 
       const homeObject = {
@@ -29,15 +30,18 @@ const BTTS = ({ events }) => {
         teamMatches[awayTeamName] = [];
       }
 
+      const homeTeamState = homeTeamScore > awayTeamScore ? 'W' : homeTeamScore === awayTeamScore ? 'D' : 'L';
+      const awayTeamState = homeTeamState === 'W' ? 'L' : homeTeamState === 'D' ? 'D' : 'W';
+
       teamMatches[homeTeamName].push({
         home: homeObject,
         away: awayObject,
-        btts: btts,
+        state: homeTeamState,
       });
       teamMatches[awayTeamName].push({
         home: awayObject,
         away: homeObject,
-        btts: btts,
+        state: awayTeamState,
       });
     });
 
@@ -77,7 +81,7 @@ const BTTS = ({ events }) => {
       <thead>
         <tr>
           <th>Team Name</th>
-          <th>Both Teams Scored</th>
+          <th>Team Form</th>
         </tr>
       </thead>
       <tbody>
@@ -87,7 +91,11 @@ const BTTS = ({ events }) => {
             <td>
               <div className="flex">
                 {teamMatches[team.teamName].reverse().map((match, index) => (
-                  <Block key={index} text={match.btts ? 'Y' : 'N'} type={match.btts ? 'dark' : 'light'} />
+                  <Block
+                    key={index}
+                    text={match.state}
+                    type={match.state === 'W' ? 'dark' : match.state === 'D' ? 'med' : 'light'}
+                  />
                 ))}
               </div>
             </td>
@@ -98,4 +106,4 @@ const BTTS = ({ events }) => {
   );
 };
 
-export default BTTS;
+export default Form;

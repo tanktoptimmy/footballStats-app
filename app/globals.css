@@ -111,6 +111,12 @@ main {
   scroll-margin-block: 5ex;
 }
 
+h1 {
+  padding: 1em;
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
 .center {
   margin: auto;
   text-align: center;

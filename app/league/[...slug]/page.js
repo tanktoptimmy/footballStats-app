@@ -24,9 +24,13 @@ export default async function League({ params }) {
       </>
     );
   }
+  const leagueName = events[0]?.league?.name || 'popo';
   return (
     <>
-      <Link href="/">Home</Link>
+      <div className="flex-line">
+        <Link href="/">Home</Link> <span>/</span>
+        {leagueName}
+      </div>
       <Main events={events} />
     </>
   );
