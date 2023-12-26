@@ -1,11 +1,11 @@
 import { Block } from '@/components';
+import { sortByDate } from '@/helpers'
 
 import './form.modules.css';
 const Form = ({ events }) => {
   const createTeamMatchesObject = (matches) => {
     const teamMatches = {};
-
-    matches.forEach((match) => {
+    matches.sort(sortByDate).forEach((match) => {
       const homeTeamName = match.teams.home.name;
       const awayTeamName = match.teams.away.name;
       const homeTeamScore = parseInt(match.score.fulltime.home);
