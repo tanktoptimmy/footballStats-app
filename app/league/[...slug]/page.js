@@ -8,6 +8,9 @@ async function getData(slug) {
   const baseURL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 
   const url = `${baseURL}/api/fixtures?id=${slug[1]}&season=${slug[2]}`;
+  console.log("URL*****")
+  console.log(url)
+  console.log('^^^^^^^^^^')
   const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
