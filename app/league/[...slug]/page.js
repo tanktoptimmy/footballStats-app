@@ -2,15 +2,9 @@ import Link from 'next/link';
 import Main from './Main';
 
 async function getData(slug) {
-  console.log("****************")
-  console.log(process.env)
-  console.log(process.env.VERCEL_URL)
-  const baseURL = process.env.VERCEL_URL ? `http://127.0.0.1:3000` : 'http://localhost:3000';
+  const baseURL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 
-  const url = `/app/api/fixtures?id=${slug[1]}&season=${slug[2]}`;
-  console.log("URL*****")
-  console.log(url)
-  console.log('^^^^^^^^^^')
+  const url = `${baseURL}/api/fixtures?id=${slug[1]}&season=${slug[2]}`;
   const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
