@@ -5,7 +5,7 @@ async function getData(slug) {
   console.log("****************")
   console.log(process.env)
   console.log(process.env.VERCEL_URL)
-  const baseURL = process.env.VERCEL_URL ? `https://football-stats-app-git-master-timparry.vercel.app` : 'http://localhost:3000';
+  const baseURL = process.env.VERCEL_URL ? `http://127.0.0.1:3000` : 'http://localhost:3000';
 
   const url = `https://football-stats-app-git-master-timparry.vercel.app/api/fixtures?id=${slug[1]}&season=${slug[2]}`;
   console.log("URL*****")
