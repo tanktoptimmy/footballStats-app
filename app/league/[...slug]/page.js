@@ -3,7 +3,7 @@ import Main from './Main';
 
 async function getData(slug) {
   console.log(process.env.VERCEL_URL)
-  const baseURL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+  const baseURL = process.env.VERCEL_URL ? `https://football-stats-app.vercel.app` : 'http://localhost:3000';
 
   const url = `${baseURL}/api/fixtures?id=${slug[1]}&season=${slug[2]}`;
   const res = await fetch(url, { cache: 'no-store' });
