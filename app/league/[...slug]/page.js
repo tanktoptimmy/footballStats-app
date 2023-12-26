@@ -7,7 +7,7 @@ async function getData(slug) {
   console.log(process.env.VERCEL_URL)
   const baseURL = process.env.VERCEL_URL ? `http://127.0.0.1:3000` : 'http://localhost:3000';
 
-  const url = `http://127.0.0.1:3000/api/fixtures?id=${slug[1]}&season=${slug[2]}`;
+  const url = `/app/api/fixtures?id=${slug[1]}&season=${slug[2]}`;
   console.log("URL*****")
   console.log(url)
   console.log('^^^^^^^^^^')
