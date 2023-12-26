@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Main from './Main';
 
 async function getData(slug) {
+  console.log("****************")
+  console.log(process.env)
   console.log(process.env.VERCEL_URL)
   const baseURL = process.env.VERCEL_URL ? `https://football-stats-app.vercel.app` : 'http://localhost:3000';
 
