@@ -4,6 +4,7 @@ import Fixture from '@/models/fixture'; // Your Mongoose model
 import { NextResponse } from 'next/server';
 
 export async function GET(req) {
+  console.error("we are getting whatever from here")
   const searchParams = req.nextUrl.searchParams;
 
   const id = searchParams.get('id');
