@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Tooltip } from 'react-tooltip';
 import { Block } from '@/components';
-import { sortByDate, calculatePoints } from '@/helpers'
+import { sortByDate, calculatePoints } from '@/helpers';
 
 import './btts.modules.css';
 
@@ -51,12 +51,14 @@ const BTTS = ({ events }) => {
   // Create object with each team's matches and BTTS field
   const teamMatches = createTeamMatchesObject(events);
   // Calculate points for each team
-  const sortedTeams = Object.entries(teamMatches).map(([teamName, matches]) => {
-    return {
-      teamName,
-      points: calculatePoints(matches, teamName),
-    };
-  }).sort((a, b) => b.points - a.points);;
+  const sortedTeams = Object.entries(teamMatches)
+    .map(([teamName, matches]) => {
+      return {
+        teamName,
+        points: calculatePoints(matches, teamName),
+      };
+    })
+    .sort((a, b) => b.points - a.points);
 
   return (
     <table>
@@ -74,11 +76,11 @@ const BTTS = ({ events }) => {
               <div className="flex">
                 {teamMatches[team.teamName].reverse().map((match, index) => (
                   <Fragment key={index}>
-                    <a className="hover" id={`${team.teamName.split(" ").join("")}-${index}`}>
-                      <Block  text={match.btts ? 'Y' : 'N'} type={match.btts ? 'dark' : 'light'} />
+                    <a className="hover" id={`${team.teamName.split(' ').join('')}-${index}`}>
+                      <Block text={match.btts ? 'Y' : 'N'} type={match.btts ? 'dark' : 'light'} />
                     </a>
                     <Tooltip
-                      anchorSelect={`#${team.teamName.split(" ").join("")}-${index}`}
+                      anchorSelect={`#${team.teamName.split(' ').join('')}-${index}`}
                       content={`${match.home.name} ${match.home.score} v ${match.away.name} ${match.away.score}`}
                     />
                   </Fragment>

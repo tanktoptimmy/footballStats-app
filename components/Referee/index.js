@@ -27,11 +27,11 @@ const Referee = ({ events }) => {
 
   // Create object keyed by referee containing events
   const refereeEvents = createRefereeEventsObject(events);
-  console.log(refereeEvents)
-  
+  console.log(refereeEvents);
 
   // Sort events based on elapsed time and extra time
-  const sortEvents = ( events ) =>   events.sort((a, b) => {
+  const sortEvents = (events) =>
+    events.sort((a, b) => {
       if (a.time.elapsed !== b.time.elapsed) {
         return a.time.elapsed - b.time.elapsed;
       } else {
@@ -55,11 +55,16 @@ const Referee = ({ events }) => {
             <td>
               <div className="relative flex">
                 {sortEvents(ref[1].events).map((ev, index) => {
-                  if (ev.type.toLowerCase() === "goal") {
-                    return <Goal key={`${ev.player.id}-${ev.team.id}-${ev.time.elapsed}-${index}`}/>
+                  if (ev.type.toLowerCase() === 'goal') {
+                    return <Goal key={`${ev.player.id}-${ev.team.id}-${ev.time.elapsed}-${index}`} />;
                   }
-                  if (ev.type.toLowerCase() === "card") {
-                    return <Card key={`${ev.player.id}-${ev.team.id}-${ev.time.elapsed}-${index}`} type={ev.detail.toLowerCase().replace("/","").split(" ").join("-")}/>
+                  if (ev.type.toLowerCase() === 'card') {
+                    return (
+                      <Card
+                        key={`${ev.player.id}-${ev.team.id}-${ev.time.elapsed}-${index}`}
+                        type={ev.detail.toLowerCase().replace('/', '').split(' ').join('-')}
+                      />
+                    );
                   }
                 })}
               </div>
@@ -68,7 +73,7 @@ const Referee = ({ events }) => {
         ))}
       </tbody>
     </table>
-  )
+  );
 };
 
 export default Referee;
