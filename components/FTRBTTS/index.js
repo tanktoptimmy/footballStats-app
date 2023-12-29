@@ -3,24 +3,27 @@ import { Tooltip } from 'react-tooltip';
 import { Block } from '@/components';
 import { sortByDate, calculatePoints } from '@/helpers'
 
-import './form.modules.css';
-const Form = ({ events }) => {
+import './btts.modules.css';
+
+const FTRBTTS = ({ events }) => {
   const createTeamMatchesObject = (matches) => {
     const teamMatches = {};
+
     matches.sort(sortByDate).forEach((match) => {
       const homeTeamName = match.teams.home.name;
       const awayTeamName = match.teams.away.name;
       const homeTeamScore = parseInt(match.score.fulltime.home);
       const awayTeamScore = parseInt(match.score.fulltime.away);
+      const btts = homeTeamScore > 0 && awayTeamScore > 0;
 
       const homeObject = {
         name: homeTeamName,
-        score: homeTeamScore,
+        score: homeTeamScore
       };
 
       const awayObject = {
         name: awayTeamName,
-        score: awayTeamScore,
+        score: awayTeamScore
       };
 
       if (!teamMatches[homeTeamName]) {
@@ -30,18 +33,17 @@ const Form = ({ events }) => {
         teamMatches[awayTeamName] = [];
       }
 
-      const homeTeamState = homeTeamScore > awayTeamScore ? 'W' : homeTeamScore === awayTeamScore ? 'D' : 'L';
-      const awayTeamState = homeTeamState === 'W' ? 'L' : homeTeamState === 'D' ? 'D' : 'W';
-
       teamMatches[homeTeamName].push({
         home: homeObject,
         away: awayObject,
-        state: homeTeamState,
+        btts: btts,
+        status: homeTeamScore > awayTeamScore ? "W" : homeTeamScore < awayTeamScore  ? "L" : "D"
       });
       teamMatches[awayTeamName].push({
         home: homeObject,
         away: awayObject,
-        state: awayTeamState,
+        btts: btts,
+        status: homeTeamScore < awayTeamScore ? "W" : homeTeamScore > awayTeamScore  ? "L" : "D"
       });
     });
 
@@ -50,21 +52,20 @@ const Form = ({ events }) => {
 
   // Create object with each team's matches and BTTS field
   const teamMatches = createTeamMatchesObject(events);
-
   // Calculate points for each team
   const sortedTeams = Object.entries(teamMatches).map(([teamName, matches]) => {
     return {
-      teamName: teamName,
+      teamName,
       points: calculatePoints(matches, teamName),
     };
-  }).sort((a, b) => b.points - a.points);
+  }).sort((a, b) => b.points - a.points);;
 
   return (
     <table>
       <thead>
         <tr>
           <th>Team Name</th>
-          <th>Team Form</th>
+          <th>Both Teams Scored</th>
         </tr>
       </thead>
       <tbody>
@@ -76,11 +77,7 @@ const Form = ({ events }) => {
                 {teamMatches[team.teamName].reverse().map((match, index) => (
                   <Fragment key={index}>
                     <a className="hover" id={`${team.teamName.split(" ").join("")}-${index}`}>
-                      <Block
-                        key={index}
-                        text={match.state}
-                        type={match.state === 'W' ? 'dark' : match.state === 'D' ? 'med' : 'light'}
-                      />
+                      <Block text={match.status} type={match.btts ? 'dark' : 'light'} />
                     </a>
                     <Tooltip
                       anchorSelect={`#${team.teamName.split(" ").join("")}-${index}`}
@@ -97,4 +94,4 @@ const Form = ({ events }) => {
   );
 };
 
-export default Form;
+export default FTRBTTS;

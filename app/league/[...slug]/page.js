@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Main from './Main';
+import 'react-tooltip/dist/react-tooltip.css';
 
 async function getData(slug) {
   const baseURL = process.env.VERCEL_URL ? `https://football-stats-app.vercel.app` : 'http://localhost:3000';

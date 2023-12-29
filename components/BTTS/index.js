@@ -1,7 +1,10 @@
+import { Fragment } from 'react';
+import { Tooltip } from 'react-tooltip';
 import { Block } from '@/components';
-import { sortByDate } from '@/helpers'
+import { sortByDate, calculatePoints } from '@/helpers'
 
 import './btts.modules.css';
+
 const BTTS = ({ events }) => {
   const createTeamMatchesObject = (matches) => {
     const teamMatches = {};
@@ -36,8 +39,8 @@ const BTTS = ({ events }) => {
         btts: btts,
       });
       teamMatches[awayTeamName].push({
-        home: awayObject,
-        away: homeObject,
+        home: homeObject,
+        away: awayObject,
         btts: btts,
       });
     });
@@ -47,31 +50,13 @@ const BTTS = ({ events }) => {
 
   // Create object with each team's matches and BTTS field
   const teamMatches = createTeamMatchesObject(events);
-
-  const calculatePoints = (matches) => {
-    let points = 0;
-    matches.forEach((match) => {
-      const homeTeamScore = match.home.score;
-      const awayTeamScore = match.away.score;
-
-      if (homeTeamScore > awayTeamScore) {
-        points += 3; // 3 points for a win
-      } else if (homeTeamScore === awayTeamScore) {
-        points += 1; // 1 point for a draw
-      }
-    });
-    return points;
-  };
-
   // Calculate points for each team
   const sortedTeams = Object.entries(teamMatches).map(([teamName, matches]) => {
     return {
-      teamName: teamName,
-      points: calculatePoints(matches),
+      teamName,
+      points: calculatePoints(matches, teamName),
     };
-  });
-
-  sortedTeams.sort((a, b) => b.points - a.points);
+  }).sort((a, b) => b.points - a.points);;
 
   return (
     <table>
@@ -88,7 +73,15 @@ const BTTS = ({ events }) => {
             <td>
               <div className="flex">
                 {teamMatches[team.teamName].reverse().map((match, index) => (
-                  <Block key={index} text={match.btts ? 'Y' : 'N'} type={match.btts ? 'dark' : 'light'} />
+                  <Fragment key={index}>
+                    <a className="hover" id={`${team.teamName.split(" ").join("")}-${index}`}>
+                      <Block  text={match.btts ? 'Y' : 'N'} type={match.btts ? 'dark' : 'light'} />
+                    </a>
+                    <Tooltip
+                      anchorSelect={`#${team.teamName.split(" ").join("")}-${index}`}
+                      content={`${match.home.name} ${match.home.score} v ${match.away.name} ${match.away.score}`}
+                    />
+                  </Fragment>
                 ))}
               </div>
             </td>
