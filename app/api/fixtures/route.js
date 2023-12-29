@@ -1,25 +1,24 @@
-import mongoose from 'mongoose'
-import dbConnect from '@/utils/dbConnect'
-import Fixture from '@/models/fixture' // Your Mongoose model
+import mongoose from 'mongoose';
+import dbConnect from '@/utils/dbConnect';
+import Fixture from '@/models/fixture';
 import { NextResponse } from 'next/server';
 
-export async function GET(req){
+export async function GET(req) {
   const searchParams = req.nextUrl.searchParams;
 
   const id = searchParams.get('id');
   const season = searchParams.get('season');
 
   try {
-    await dbConnect()
+    await dbConnect();
     const results = await Fixture.find(
-      { 'league.id': id, 'season': parseInt(season, 10)},
+      { 'league.id': id, season: parseInt(season, 10) },
       // '-events'
-    )
-    return NextResponse.json({ data: results })
+    );
+    return NextResponse.json({ data: results });
   } catch (err) {
-    return NextResponse.json({ message: 'Internal server error' })
+    return NextResponse.json({ message: 'Internal server error' });
   } finally {
-    mongoose.disconnect()
+    mongoose.disconnect();
   }
-
 }

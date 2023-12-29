@@ -1,0 +1,23 @@
+.block {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark {
+  background: black;
+  color: white;
+}
+
+.light {
+  background: white;
+  color: black;
+  border: 1px solid grey;
+}
+
+.med {
+  background: grey;
+  color: black;
+}
