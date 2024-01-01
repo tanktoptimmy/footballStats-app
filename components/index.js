@@ -9,5 +9,6 @@ import Form from './Form';
 import Referee from './Referee';
 import ColourCard from './ColourCard';
 import Goal from './Goal';
+import { Tooltip } from './ToolTip'
 
-export { Tabs, Results, Fixtures, League, BTTS, FTRBTTS, Block, Form, Referee, ColourCard, Goal };
+export { Tabs, Results, Fixtures, League, BTTS, FTRBTTS, Block, Form, Referee, ColourCard, Goal, Tooltip };

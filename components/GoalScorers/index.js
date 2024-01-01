@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
-import { Tooltip } from 'react-tooltip';
-import { Block } from '@/components';
+import { Block, Tooltip } from '@/components';
 import { sortByDate, calculatePoints } from '@/helpers';
 
 import './goalscorers.modules.css';
