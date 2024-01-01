@@ -1,4 +1,4 @@
-import { Card, Goal } from '@/components/';
+import { ColourCard, Goal } from '@/components/';
 import './referee.modules.css';
 const Referee = ({ events }) => {
   const createRefereeEventsObject = (matches) => {
@@ -60,7 +60,7 @@ const Referee = ({ events }) => {
                   }
                   if (ev.type.toLowerCase() === 'card') {
                     return (
-                      <Card
+                      <ColourCard
                         key={`${ev.player.id}-${ev.team.id}-${ev.time.elapsed}-${index}`}
                         type={ev.detail.toLowerCase().replace('/', '').split(' ').join('-')}
                       />

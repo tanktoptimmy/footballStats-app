@@ -33,6 +33,10 @@ const fixtureSchema = new mongoose.Schema({
   },
   status: String,
   events: [],
+  statistics:{
+    home:{},
+    away:{}
+  }
 });
 
 const Fixture = mongoose.models.Fixture || mongoose.model('Fixture', fixtureSchema);

@@ -6,6 +6,7 @@ import { resultedEvents, fixtureEvents } from '@/helpers';
 export default function Main({ events }) {
   const tabs = ['Results', 'Fixtures', 'Table', 'Form', 'BTTS', 'FTRBTTS', 'Referee'];
   const [selectedTab, setSelectedTab] = useState('Results');
+  console.log(events)
   return (
     <main>
       <Tabs tabs={tabs} selected={selectedTab} onClick={setSelectedTab} />
