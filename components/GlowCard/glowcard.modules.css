@@ -135,6 +135,7 @@
 [data-glow] :is(a, button) [data-glow] {
   background: none;
 }
+
 [data-glow] :is(a, button) [data-glow]::before {
   inset: calc(var(--border-size) * -1);
   border-width: calc(var(--border-size) * 1);
