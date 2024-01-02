@@ -1,7 +1,10 @@
 import './glowcard.modules.css';
 
-const Block = ({ children }) => {
-  return <section>{children}</section>;
+const GlowCard = ({ children }) => {
+  return (<section data-glow className='glow-card'>
+  <div>
+  {children}
+  </div></section>);
 };
 
-export default Block;
+export default GlowCard;

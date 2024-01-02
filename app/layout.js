@@ -1,4 +1,5 @@
 import './globals.css';
+import { BaseGlow } from '@/components';
 
 export const metadata = {
   title: 'Some football stats',
@@ -6,9 +7,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+      {children}
+      <BaseGlow/>
+      </body>
     </html>
   );
 }

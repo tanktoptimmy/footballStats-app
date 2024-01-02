@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import slugify from 'slugify';
+import { GlowCard } from '@/components';
+import './page.module.css'
 
 const leagues = [
   {
@@ -39,12 +41,14 @@ const Home = () => {
     <div>
       <h1>Some Football Stats</h1>
       <main>
-        <ul>
+        <ul className="grid">
           {leagues.map((league) => (
             <li key={`${league.id}`}>
-              <Link href={`/league/${slugify(league.name, { lower: true })}/${league.id}/${league.season}`}>
-                {league.name}
-              </Link>
+              <GlowCard>
+                <Link href={`/league/${slugify(league.name, { lower: true })}/${league.id}/${league.season}`}>
+                  {league.name}
+                </Link>
+              </GlowCard>
             </li>
           ))}
         </ul>
