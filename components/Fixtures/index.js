@@ -1,5 +1,6 @@
 import './fixtures.modules.css';
 import Fixture from './Fixture';
+import { GlowCard } from '@/components';
 
 const Fixtures = ({ events }) => {
   let eventsByRound = {};
@@ -51,7 +52,9 @@ const Fixtures = ({ events }) => {
             <h2 className="secondary-title">{round[0]}</h2>
             <div className="grid">
               {round[1].map((ev) => (
-                <Fixture key={ev._id} event={ev} />
+                <GlowCard key={ev._id} px="px-md" py="py-md">
+                  <Fixture event={ev} />
+                </GlowCard>
               ))}
             </div>
           </section>

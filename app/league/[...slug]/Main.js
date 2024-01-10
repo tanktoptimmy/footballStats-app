@@ -4,7 +4,7 @@ import { Tabs, Results, Fixtures, League, BTTS, FTRBTTS, Form, Referee } from '@
 import { resultedEvents, fixtureEvents } from '@/helpers';
 
 export default function Main({ events }) {
-  const tabs = ['Results', 'Fixtures', 'Table', 'Form', 'BTTS', 'FTRBTTS', 'Referee'];
+  const tabs = ['Results', 'Fixtures', 'Table', 'Form', 'BTTS', 'FTRBTTS', 'Shots on Target', 'Referee'];
   const [selectedTab, setSelectedTab] = useState('Results');
   console.log(events)
   return (
@@ -16,6 +16,7 @@ export default function Main({ events }) {
       {selectedTab === 'BTTS' ? <BTTS events={resultedEvents(events)} /> : null}
       {selectedTab === 'FTRBTTS' ? <FTRBTTS events={resultedEvents(events)} /> : null}
       {selectedTab === 'Form' ? <Form events={resultedEvents(events)} /> : null}
+      {selectedTab === 'Shots on Target' ? <Form events={resultedEvents(events)} /> : null}
       {selectedTab === 'Referee' ? <Referee events={resultedEvents(events)} /> : null}
     </main>
   );

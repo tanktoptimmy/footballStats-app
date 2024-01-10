@@ -141,6 +141,7 @@ const League = ({ events }) => {
         ))}
       </tbody>
     </table>
+
   );
 };
 

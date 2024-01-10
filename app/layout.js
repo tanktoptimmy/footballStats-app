@@ -1,8 +1,9 @@
 import './globals.css';
+import 'react-tooltip/dist/react-tooltip.css';
 import { BaseGlow } from '@/components';
 
 export const metadata = {
-  title: 'Some football stats',
+  title: 'Easy football stats',
   description: 'Create what you want',
 };
 

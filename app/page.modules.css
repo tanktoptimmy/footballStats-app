@@ -1,0 +1,26 @@
+.glow-card-title {
+  height: 2em;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+
+.title-holder {
+  padding: 12px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title-holder h1 {
+  text-transform: uppercase;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 2em;
+  padding: 0;
+}
+
+.title-holder p {
+  padding: 12px;
+  font-size: 1.5em;
+}

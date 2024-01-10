@@ -1,14 +1,16 @@
 import './tabs.modules.css';
-
+import { GlowCard } from '@/components';
 const Tabs = ({ tabs, selected, onClick }) => {
   return (
     <nav>
-      <ul className="ul">
+      <ul className="ul-tabs">
         {tabs.map((tab) => (
           <li key={tab}>
-            <button role="tab" aria-selected={selected === tab} onClick={() => onClick(tab)}>
-              {tab}
-            </button>
+            <GlowCard>
+              <button role="tab" aria-selected={selected === tab} onClick={() => onClick(tab)}>
+                {tab}
+              </button>
+            </GlowCard>
           </li>
         ))}
       </ul>

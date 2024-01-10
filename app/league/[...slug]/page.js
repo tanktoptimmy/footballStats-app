@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Main from './Main';
-import 'react-tooltip/dist/react-tooltip.css';
+
+import './league.modules.css';
 
 async function getData(slug) {
   const baseURL = process.env.VERCEL_URL ? `https://football-stats-app.vercel.app` : 'http://localhost:3000';
@@ -18,17 +19,17 @@ export default async function League({ params }) {
   const events = data?.data;
   if (!events || !events.length === 0) {
     return (
-      <>
-        <Link href="/">Home</Link>
+      <div className="top-breadcrumb">
+        <Link href="/">Back</Link>
         <p>Sorry we have had a problem getting data</p>
-      </>
+      </div>
     );
   }
   const leagueName = events[0]?.league?.name || 'popo';
   return (
     <>
-      <div className="flex-line">
-        <Link href="/">Home</Link> <span>/</span>
+      <div className="flex-line top-breadcrumb">
+        <Link href="/">&lt; Back</Link> <span>/</span>
         {leagueName}
       </div>
       <Main events={events} />

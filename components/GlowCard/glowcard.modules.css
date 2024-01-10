@@ -23,32 +23,17 @@
 	box-sizing: border-box;
 }
 
-.wrapper {
-	position: relative;
-}
-
 .glow-card {
-  aspect-ratio: 3 / 4;
   border-radius: calc(var(--radius) * 1px);
-  width: 260px;
   position: relative;
-	grid-template-rows: 1fr auto;
+	/* grid-template-rows: 1fr auto; */
   box-shadow: 0 1rem 2rem -1rem black;
-  padding: 1rem;
-  display: grid;
+  display: flex;
+  height: 100%;
   gap: 1rem;
   backdrop-filter: blur(calc(var(--cardblur, 5) * 1px));
 }
-/* main {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 120ch;
-  max-width: calc(100vw - 2rem);
-  position: relative;
-} */
+
 
 /* Glow specific styles */
 [data-glow] {
